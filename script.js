@@ -42,7 +42,7 @@ async function scaning(tag) {
         }
 
         if (i == 100) {
-            style('Drives Analisadas', '25px')
+            style('Drivers Analisadas', '25px')
             buttons.forEach(button => {
                 button.classList.add('hover')
             })
