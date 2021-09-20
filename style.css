@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+body{
+    background-color: #222222;
+    height: 100vh;
+}
+
+main{
+    width: 300px;
+    height: 300px;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+button{
+    position: relative;
+    z-index: 10;
+    border-radius: 100%;
+    border-color: transparent;
+    background-color: #222222;
+    width: 160px;
+    height: 160px;
+    cursor: pointer;
+}
+button .mode{
+    color: white;
+    font-size: 30px;
+}
+button .value{
+    position: absolute;
+    bottom: 25px;
+    color: white;
+    font-size: 18px;
+    margin-left: 5px;
+    opacity: 0;
+}
+
+
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    position: absolute;
+    background-color: #222222;
+    border: 3px solid rgb(0, 225, 255);
+    z-index: 1;
+    cursor: pointer;
+}
+.points {
+    width: 2px;
+    height: 15px;
+    background-color: #505050;
+    opacity: 0;
+    position: absolute;
+    transform: rotate(calc(var(--i)* 3.6deg)) translateY(-89px);
+    border-radius: 3px;
+    animation: glow 0s linear forwards;
+}
+
+
+.highBorder{
+    position: absolute;
+    min-width: 250px;
+    min-height: 250px;
+    border: 15px solid #1d1d1d;
+    box-shadow: 0 0 5px #1d1d1d;
+    border-radius: 100%;
+}
+
+
+.medBorder{
+    position: absolute;
+    min-width: 206px;
+    min-height: 206px;
+    border: 21px solid rgb(49, 49, 49);
+    border-radius: 100%; 
+    transition: 400ms;
+}
+
+
+.lines{
+    position: absolute;
+    border: 2px solid #1d1d1d;
+    background-color: #1d1d1d;
+    width: 246px;
+    transition: 200ms;
+}
+.lines::before{
+    content: "";
+    position: absolute;
+    border: 2px solid #1d1d1d;
+    background-color: #1d1d1d;
+    width: 246px;
+    top: -1px;
+    transform: rotate(-60deg);
+}
+.lines::after{
+    content: "";
+    position: absolute;
+    border: 2px solid #1d1d1d;
+    background-color: #1d1d1d;
+    width: 246px;
+    top: -3px;
+    transform: rotate(60deg);
+}
+
+
+.lowBorder{
+    position: absolute;
+    border: 3px solid #1d1d1d;
+    background-color: #1d1d1d;
+    border-radius: 100%;
+    min-width: 206px;
+    min-height: 206px;
+
+    
+}
+
+
+/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+*/
+
+
+.hover:hover ~ .lines{
+    transition: 200ms;
+    transform: rotate(90deg);
+}
+
+.hover:hover ~ .medBorder{
+    border-color: rgb(0, 255, 85);
+}
+
+
+.animating ~ .lines{
+    animation: rotating 1.5s linear infinite;
+}
+
+.animating ~ .medBorder{
+    border-color: rgb(0, 255, 85);
+}
+
+.noAnimating ~ .medBorder{
+    border-color: rgb(0, 255, 85);
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(90deg);
+    }
+    to {
+        transform: rotate(450deg);
+    }
+}
+
+@keyframes glow {
+    to {
+        opacity: 1;
+    }
+}
